@@ -46,28 +46,30 @@ A responsive, full-stack Laravel application designed for personal and professio
 
 ## 🛠 Setup Instructions
 
-1. **Install Dependencies**:
-   ```bash
-   composer install
-   npm install
-   ```
+### Option 1: Local Setup (Manual)
+1. **Install Dependencies**: `composer install` and `npm install`.
+2. **Environment Setup**: `cp .env.example .env` and `php artisan key:generate`.
+3. **Run Migrations**: `php artisan migrate`.
+4. **Start Development Server**: `php artisan serve`.
 
-2. **Environment Setup**:
+### Option 2: Docker Setup (Recommended)
+This project uses **Laravel Sail** for Docker-based development.
+1. **Start Docker Containers**:
    ```bash
-   cp .env.example .env
-   php artisan key:generate
+   ./vendor/bin/sail up -d
    ```
-
+   *Note: Sail automatically uses the generated `compose.yaml` file.*
+2. **Install Dependencies (if needed)**:
+   ```bash
+   ./vendor/bin/sail composer install
+   ./vendor/bin/sail npm install
+   ```
 3. **Run Migrations**:
    ```bash
-   php artisan migrate
+   ./vendor/bin/sail artisan migrate
    ```
-
-4. **Start Development Server**:
-   ```bash
-   php artisan serve
-   ```
-   Visit `http://localhost:8000` to view the app.
+4. **Access the App**: The app will be available at `http://localhost`.
+5. **Stop Containers**: `./vendor/bin/sail stop`.
 
 ---
 *Built as part of the LLM Agentic Coding Assignment.*
