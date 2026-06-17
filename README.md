@@ -1,59 +1,73 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Expense Tracker Web App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A responsive, full-stack Laravel application designed for personal and professional financial tracking. Features include manual expense entry, dynamic category management, and AI-powered (mocked) receipt parsing.
 
-## About Laravel
+## 🚀 Core Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Manual Expense Entry**: Log expenses with amount, date, category, and description.
+- **Dynamic Categories**: Automatically create new categories on the fly during expense entry.
+- **AI/OCR Receipt Processing (Mocked)**: Upload receipt images to automatically extract and pre-fill form data.
+- **Analytical Dashboard**: 
+    - Month-wise expense summaries.
+    - Category-specific expenditure breakdowns.
+    - Real-time date range filtering.
+- **Reactive UI**: Built with Livewire for a seamless, SPA-like experience without page refreshes.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠 Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Framework**: [Laravel 13.x](https://laravel.com)
+- **Frontend**: [Livewire 4.x](https://livewire.laravel.com) (TALL Stack)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com)
+- **Database**: SQLite (Default) / PostgreSQL / MySQL
+- **AI Engine**: Mocked Zen Open-Code Model for OCR.
 
-## Learning Laravel
+## 📂 Project Structure & File Map
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🧩 Core Documentation (`/docs`)
+- **`REQUIREMENT_SPEC.MD`**: The foundational functional and technical requirements for the project.
+- **`ARCHITECTURE.md`**: High-level system design, database schema, and relationship mapping.
+- **`CODING-GUIDELINES.md`**: Production standards for naming, typing, and performance.
+- **`AGENTS.MD`**: Multi-agent framework roles and escalation protocols for the development lifecycle.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🏗 Models & Database (`/app/Models`, `/database`)
+- **`app/Models/Expense.php`**: Represents a single financial transaction. Handles relationships and data casting for dates/amounts.
+- **`app/Models/Category.php`**: Manages unique expense tags.
+- **`database/migrations/..._create_categories_table.php`**: Schema for the categories table.
+- **`database/migrations/..._create_expenses_table.php`**: Schema for the expenses table with foreign key constraints.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### ⚡ Livewire Components (`/resources/views/components`)
+*Using Livewire Single File Components (SFC) with the ⚡ prefix.*
+- **`⚡expense-form.blade.php`**: Handles the logic and UI for adding expenses, including the AI receipt processing and dynamic category creation.
+- **`⚡expense-dashboard.blade.php`**: Handles data aggregation, date filtering, and the display of summaries and the expense list.
 
-## Agentic Development
+### 🌐 Routing & Views
+- **`routes/web.php`**: The main entry point for the web application.
+- **`resources/views/welcome.blade.php`**: The main application layout where the Livewire components are integrated.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## 🛠 Setup Instructions
 
-```bash
-composer require laravel/boost --dev
+1. **Install Dependencies**:
+   ```bash
+   composer install
+   npm install
+   ```
 
-php artisan boost:install
-```
+2. **Environment Setup**:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+3. **Run Migrations**:
+   ```bash
+   php artisan migrate
+   ```
 
-## Contributing
+4. **Start Development Server**:
+   ```bash
+   php artisan serve
+   ```
+   Visit `http://localhost:8000` to view the app.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# assignemnt_llm_expense_tracker
+---
+*Built as part of the LLM Agentic Coding Assignment.*
