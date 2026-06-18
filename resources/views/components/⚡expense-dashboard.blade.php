@@ -32,7 +32,7 @@ new class extends Component
 
     public function getMonthlySummariesProperty()
     {
-        return Expense::selectRaw('strftime("%Y-%m", expense_date) as month, SUM(amount) as total')
+        return Expense::selectRaw("DATE_FORMAT(expense_date, '%Y-%m') as month, SUM(amount) as total")
             ->whereBetween('expense_date', [$this->startDate, $this->endDate])
             ->groupBy('month')
             ->orderBy('month', 'desc')

@@ -30,12 +30,12 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Sidebar: Expense Form -->
                 <div class="lg:col-span-1">
-                    <livewire:⚡expense-form />
+                    @livewire('⚡expense-form')
                 </div>
 
                 <!-- Main Content: Dashboard -->
                 <div class="lg:col-span-2">
-                    <livewire:⚡expense-dashboard />
+                    @livewire('⚡expense-dashboard')
                 </div>
             </div>
         </div>
