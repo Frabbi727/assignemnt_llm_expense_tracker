@@ -73,3 +73,26 @@ This project uses **Laravel Sail** for Docker-based development.
 
 ---
 *Built as part of the LLM Agentic Coding Assignment.*
+
+
+1. Start the Docker Containers
+  This will start the web server, database, and other services in the background.
+   1 ./vendor/bin/sail up -d
+
+  2. Install Dependencies (if not already done)
+  Ensure both PHP and Node.js packages are installed inside the container.
+   1 ./vendor/bin/sail composer install
+   2 ./vendor/bin/sail npm install
+
+  3. Setup Database
+  Run the migrations to create the tables and seed the database with initial data.
+
+   1 ./vendor/bin/sail artisan migrate --seed
+
+  4. Build Frontend Assets
+  Compile the CSS and JavaScript (Tailwind and Livewire assets).
+
+   1 ./vendor/bin/sail npm run build
+
+
+ http://localhost:8080
